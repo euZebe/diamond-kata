@@ -1,18 +1,10 @@
-// function getParam() {
-//   const param = process.argv[2];
-//   if (!param || !param.match(/^[A-Za-z]$/)) {
-//     throw 'One parameter (composed of one letter) is expected.';
-//   }
-//   return param;
-// }
-
 const PYRAMID_TIP = 'A';
 
 String.prototype.charCode = function() {
   return this.charCodeAt(0);
 }
 
-export default (letter = PYRAMID_TIP) => {
+function buildDiamond(letter = PYRAMID_TIP) {
   const pyramidHeight = letter.charCode() - PYRAMID_TIP.charCode() + 1;
   let result = '';
   for(let level = 0 ; level < pyramidHeight ; level++) {
@@ -37,8 +29,9 @@ export default (letter = PYRAMID_TIP) => {
       result += Array(nbSpacesBetween + 1).join(' ') // + 1 cause join feels only intervals
         + currentLetter;
     }
-
   }
-
   return result;
 }
+
+export default buildDiamond;
+
